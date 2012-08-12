@@ -1,0 +1,33 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	<script type="text/javascript">
+	</script>
+</head>
+
+<body>
+<br>
+<h1 style="color:white;">man City Result page</h1>
+<br>
+<div class="loginbox start" style="margin-top:0px;">
+<br>
+<form action="/login" method="get">
+	<div style="margin:auto; width: 650px;">
+	<input class="sbox" type=text name=city></input>
+	<input class="sbox" style="width:50px;" type=text name=num></input>
+	<input class="button" type="submit" name="submit" value="Go" /></div>
+</form>
+</div>
+{% if result %}
+	<br><br><br>
+	<div class="loginbox" >
+	
+	{% for row in result.rows: %}
+		<div class="resultrow"><b>{{row.get('from_user')}}</b> {{' '+row.get('text') }}
+		<br></div>
+	{% endfor %}
+	<br></div>
+	<br><br>
+{% endif %}
+</body>
+</html>
